@@ -1,0 +1,17 @@
+{% extends "error.html" %}
+
+{% block title %}404 - Page not found{% endblock %}
+
+{% block main %}
+    <div class="not-found-background">
+        <img src="/images/world-blue.svg">
+    </div>
+    <div class="not-found-container">
+        <h2>404 - Page not found</h2>
+        <h3>Uh oh! It seems like you've traveled too far away!</h3>
+        <p>If you think this a mistake on our side please let us know so we can fix the issue.
+            <br>
+            Otherwise click the button bellow and let us take you back home!</p>
+        <a href="{{ '/' + data.language }}">TAKE ME HOME</a>
+    </div>
+{% endblock %}

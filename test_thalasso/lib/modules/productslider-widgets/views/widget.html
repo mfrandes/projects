@@ -1,0 +1,29 @@
+{% if data.utilities %}
+    {% set title = data.utilities.cleanRichText ( data.widget['title' + data.language].items[0].content ) %}
+    {% if title %}
+        <h2 class="slider-title">{{ data.widget['title' + data.language].items[0].content | safe }}</h2>
+    {% else %}
+        <h2 class="slider-title">{{ data.widget['title' + data.global.defaultLanguage].items[0].content | safe }}</h2>
+    {% endif %}
+{% endif %}
+{% if data.widget.productBoxes.length < 3 %}
+    <div class="owl-carousel owl-theme product-slider centered-products slider-widget-container">
+{% else %}
+    <div class="owl-carousel owl-theme product-slider slider-widget-container">
+{% endif %}
+    {% for productBox in data.widget.productBoxes %}
+        <div class="item">
+            <a href="{{ productBox.url }}">
+                <div class="slider-image-container">
+                    <img src="{{ productBox.image }}">
+                    {% if productBox.discount %}
+                        <span class="slider-offer">{{ "-" + productBox.discount + "%" }}</span>
+                    {% endif %}
+                    <div class="slider-label">
+                        <p>{{ productBox.productName }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>

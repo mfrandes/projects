@@ -1,0 +1,60 @@
+{# Automatically extends the right outer layout and also handles AJAX siutations #}
+{% extends data.outerLayout %}
+
+{% block title %}
+    {# Create a useful, SEO-friendly title tag based on what we have #}
+    {% if data.piece %}
+        {{ data.piece.title }}
+    {% elseif data.page %}
+        {{ data.page.title }}
+    {% else %}
+        {{ apos.log('Looks like you forgot to override the title block in a template that does not have access to an Apostrophe page or piece.') }}
+    {% endif %}
+{% endblock %}
+
+{% block extraHead %}
+    <link href="/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="/css/global.css" rel="stylesheet" type="text/css">
+    <link href="/css/themes.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% endblock %}
+
+{% block beforeMain %}
+    <div class="page-container">
+        {{ apos.singleton(data.global, 'menu', 'menu') }}
+        {{ apos.singleton(data.global, 'searchbar', 'searchbar', {controls: {movable: false, position: 'top-right'} }) }}
+        {{ apos.singleton(data.global, 'mainslider', 'mainslider', {controls: {movable: false, position: 'bottom-right'} }) }}
+    </div>
+{% endblock %}
+
+{% block main %}{% endblock %}
+
+{% block afterMain %}
+    <div class="footer-container">
+        <div class="footer-left">
+            {{ apos.singleton(data.global, 'contact', 'contact') }}
+            <div class="footer-line-separator"></div>
+            {{ apos.singleton(data.global, 'followus', 'followus') }}
+        </div>
+        <div class="footer-right">
+            <div class="footer-brochure">
+                <span class="label">Brochure request:</span>
+                <input type="text" placeholder="full name">
+                <input type="text" placeholder="address">
+                <button type="submit">ordre</button>
+            </div>
+            <div class="footer-line-separator"></div>
+            <div class="footer-news">
+                <span class="label">newsletter:
+                </span>
+                <input type="text" placeholder="votre email">
+                <button type="submit">je m'inscris</button>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>Copyright © Club Thalasso 2019
+            </p>
+        </div>
+    </div>
+    <script src="/js/global.js" type="text/javascript"></script>
+{% endblock %}

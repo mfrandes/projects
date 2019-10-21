@@ -1,0 +1,22 @@
+<div class="fw header-image-container">
+    <div class="owl-carousel owl-theme main-slider">
+        {% for piece in data.widget._pieces %}
+            {% set image = apos.images.first(piece.image) %}
+            <div class="item">
+                {% if image %}
+                    <div class="header-img-bg" style="background-image: url({{ apos.attachments.url(image, { size: 'max' }) }})"></div>
+                {% endif %}
+                <div class="container-header">
+                    {% if data.utilities %}
+                        {% set title = data.utilities.cleanRichText ( piece['title' + data.language].items[0].content ) %}
+                        {% if title %}
+                            <h1>{{ piece['title' + data.language].items[0].content | safe }}</h1>
+                        {% else %}
+                            <h1>{{ piece['title' + data.global.defaultLanguage].items[0].content | safe }}</h1>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

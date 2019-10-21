@@ -1,0 +1,178 @@
+@import "global.css";
+
+$full-width: 100%;
+$breakpoint-large: 1200px;
+$breakpoint-medium: 700px;
+
+$widget-large: 1005px;
+$info-large: 1191px;
+$header-large: 1250px;
+$page-large: 1920px;
+$slider-widget-large: 1000px;
+$top-navbar-large: 1247px;
+
+.themes-container {
+    h2 {
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: Lato;
+        color: #3A659A;
+    }
+
+    p {
+        text-align: center;
+        color: #707070;
+        font-family: Lato;
+    }
+
+    .themes-images-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .theme-image {
+            position: relative;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .label {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Lato;
+            text-transform: uppercase;
+            color: #fff;
+            background-color: rgba(58, 101, 154, 0.5);
+            font-weight: bold;
+        }
+    }
+
+    .apos-area-widgets {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: $breakpoint-large) {
+    .themes-container {
+        h2 {
+            margin-top: 72px;
+            margin-bottom: 10px;
+            font-size: 25px;
+        }
+
+        p {
+            width: 1128px;
+            margin: 0 auto;
+            font-size: 17px;
+            line-height: 25px;
+            margin-top: 30px;
+        }
+
+        .themes-images-container {
+            width: 1194px;
+            margin: 0 auto;
+            margin-top: 80px;
+
+            .theme-image {
+                width: 285px;
+                height: 250px;
+                margin-top: 20px;
+
+                &:not(:nth-child(4n)):not(:last-child) {
+                    margin-right: 18px;
+                }
+            }
+
+            .label {
+                left: 0;
+                bottom: 38px;
+                padding-left: 6px;
+                padding-right: 6px;
+                min-height: 40px;
+                max-width: 220px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint-large) and (min-width: $breakpoint-medium) {
+    .themes-container {
+        h2 {
+            margin-top: 48px;
+            margin-bottom: 30px;
+            font-size: 38px;
+        }
+
+        p {
+            margin-left: 20px;
+            margin-right: 20px;
+            font-size: 30px;
+            line-height: 35px;
+            margin-top: 30px;
+        }
+
+        .themes-images-container {
+            margin-top: 80px;
+
+            .theme-image {
+                width: 50%;
+                height: 350px;
+            }
+
+            .label {
+                left: 0;
+                bottom: 38px;
+                padding-left: 6px;
+                padding-right: 6px;
+                min-height: 40px;
+                max-width: 220px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint-medium) {
+    .themes-container {
+        h2 {
+            margin-top: 38px;
+            margin-bottom: 38px;
+            font-size: 20px;
+        }
+
+        p {
+            margin-left: 10px;
+            margin-right: 10px;
+            font-size: 16px;
+            line-height: 23px;
+            margin-top: 30px;
+        }
+
+        .themes-images-container {
+            margin-top: 50px;
+
+            .theme-image {
+                width: 50%;
+                height: 164px;
+            }
+
+            .label {
+                left: 0;
+                bottom: 24px;
+                padding-left: 6px;
+                padding-right: 6px;
+                min-height: 21px;
+                max-width: 155px;
+                font-size: 10px;
+            }
+        }
+    }
+}

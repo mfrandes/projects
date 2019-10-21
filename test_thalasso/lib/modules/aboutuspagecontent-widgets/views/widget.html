@@ -1,0 +1,25 @@
+<div class="about-container">
+    {% if data.utilities %}
+        {% set image = apos.images.first(data.widget.image) %}
+        {% if data.widget['title' + data.language] %}
+            <h2>{{ data.widget['title' + data.language] }}</h2>
+        {% else %}
+            <h2>{{ data.widget['title' + data.global.defaultLanguage] }}</h2>
+        {% endif %}
+        {% set baseContent = data.utilities.cleanRichText ( data.widget['content' + data.language].items[0].content ) %}
+        {% if baseContent %}
+            <p class="center-text about-text">{{ data.widget['content' + data.language].items[0].content | safe }}</p>
+        {% else %}
+            <p class="center-text about-text">{{ data.widget['content' + data.global.defaultLanguage].items[0].content | safe }}</p>
+        {% endif %}
+        <div class="about-image-container">
+            <div class="about-image" style="background-image: url({{ apos.attachments.url(image, { size: 'max' }) }})"></div>
+            {% set baseContentTwo = data.utilities.cleanRichText ( data.widget['contentTwo' + data.language].items[0].content ) %}
+            {% if baseContentTwo %}
+                <p>{{ data.widget['contentTwo' + data.language].items[0].content | safe }}</p>
+            {% else %}
+                <p>{{ data.widget['contentTwo' + data.global.defaultLanguage].items[0].content | safe }}</p>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>

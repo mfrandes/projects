@@ -1,0 +1,27 @@
+{% extends "blogpost.html" %}
+{% block title %}{{ data.page.title }}
+{% endblock %}
+
+{% block main %}
+    <div class="blog-list-container" style="text-align:center;padding:50px;">
+        {% for piece in data.pieces %}
+            <a href="{{ '/' + data.language + piece._url }}" class="blog-link">
+                <div class="blog-thumbnail-box">
+                    {% set image = apos.images.first(piece.image) %}
+                    {% if image %}
+                        <div class="blog-list-image" style="background: url({{ apos.attachments.url(image, { size: 'one-sixth' }) }});"></div>
+                    {% endif %}
+                    {% if piece['title' + data.language] %}
+                        <h4>{{ piece['title' + data.language] }}</h4>
+                    {% else %}
+                        <h4>{{ piece['title' + data.global.defaultLanguage] }}</h4>
+                    {% endif %}
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+    <div class="pagination" style="text-align: center;">
+        {% import 'apostrophe-pager:macros.html' as pager with context %}
+        {{ pager.render({ page: data.currentPage, total: data.totalPages }, data.url) }}
+    </div>
+{% endblock %}

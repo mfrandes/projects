@@ -1,0 +1,39 @@
+<div class="fw top-search-container">
+    <div class="top-search">
+        <select class="country">
+            {% if data.widget['destinationSelect' + data.language] %}
+                <option value="ALL" disabled selected hidden>{{ data.widget['destinationSelect' + data.language] }}</option>
+            {% else %}
+                <option value="ALL" disabled selected hidden>{{ data.widget['destinationSelect' + data.global.defaultLanguage] }}</option>
+            {% endif %}
+            {% for country in data.widget.countryAreaList %}
+                <option value="{{ country.code }}" data-products="{{ country.products }}">{{ country.label }}</option>
+            {% endfor %}
+        </select>
+        <select class="category">
+            {% if data.widget['categorySelect' + data.language] %}
+                <option value="ALL" disabled selected hidden>{{ data.widget['categorySelect' + data.language] }}</option>
+            {% else %}
+                <option value="ALL" disabled selected hidden>{{ data.widget['categorySelect' + data.global.defaultLanguag] }}</option>
+            {% endif %}
+            {% for category in data.widget.categoryList %}
+                <option value="{{ category.code }}" data-products="{{ category.products }}">{{ category.label }}</option>
+            {% endfor %}
+        </select>
+        <select class="date">
+            {% if data.widget['dateSelect' + data.language] %}
+                <option value="ALL" disabled selected hidden>{{ data.widget['dateSelect' + data.language] }}</option>
+            {% else %}
+                <option value="ALL" disabled selected hidden>{{ data.widget['dateSelect' + data.global.defaultLanguage] }}</option>
+            {% endif %}
+            {% for date in data.widget.datesList %}
+                <option value="{{ date.code }}" data-products="{{ date.products }}">{{ date.label }}</option>
+            {% endfor %}
+        </select>
+        {% if data.widget['searchButton' + data.language] %}
+            <button class="search" data-url="{{ data.widget.url }}" data-language="{{ data.language }}">{{ data.widget['searchButton' + data.language] }}</button>
+        {% else %}
+            <button class="search" data-url="{{ data.widget.url }}" data-language="{{ data.language }}">{{ data.widget['searchButton' + data.global.defaultLanguage] }}</button>
+        {% endif %}
+    </div>
+</div>

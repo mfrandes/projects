@@ -1,0 +1,11 @@
+<div class="footer-info">
+    <img src="/images/logo/tha-logo.png">
+    {% if data.utilities %}
+        {% set contactTranslation = data.utilities.cleanRichText ( data.widget['contactTranslation' + data.language].items[0].content ) %}
+        {% if contactTranslation %}
+            {{ data.widget['contactTranslation' + data.language].items[0].content | safe }}
+        {% else %}
+            {{ data.widget['contactTranslation' + data.global.defaultLanguage].items[0].content | safe }}
+        {% endif %}
+    {% endif %}
+</div>

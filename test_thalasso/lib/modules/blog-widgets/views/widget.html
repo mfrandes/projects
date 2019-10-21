@@ -1,0 +1,31 @@
+<div class="blog-container">
+    <h2 class="info-title">BLOG</h2>
+    <div class="owl-carousel owl-theme blog-slider">
+        {% for piece in data.widget._pieces %}
+            {% if loop.index <= 3 %}
+                {% set image = apos.images.first(piece.image) %}
+                <div class="blog item">
+                    {% if image %}
+                        <a href="{{ '/' + data.language + piece._url }}">
+                            <img src="{{ apos.attachments.url(image, { size: 'one-sixth' }) }}"/>
+                        </a>
+                    {% endif %}
+                    <div class="blog-text">
+                        <a href="{{ '/' + data.language + piece._url }}">
+                            {% if piece['title' + data.language] %}
+                                <h3>{{ piece['title' + data.language] }}</h3>
+                            {% else %}
+                                <h3>{{ piece['title' + data.global.defaultLanguage] }}</h3>
+                            {% endif %}
+                        </a>
+                        {% if piece['shortContent' + data.language] %}
+                            <p>{{ piece['shortContent' + data.language] }}</p>
+                        {% else %}
+                            <p>{{ piece['shortContent' + data.global.defaultLanguage] }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

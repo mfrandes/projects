@@ -1,0 +1,54 @@
+
+<div class="top-navbar mobile">
+    <div class="logo-container">
+        {{ apos.singleton(data.widget, 'logoArea', 'apostrophe-images', {
+                    limit: 1,
+                    size: 'one-third'
+                }) }}
+    </div>
+    <div class="menu-items-container">
+        <div class="language-container" onclick="openLanguageMenu()">
+            <p class="language-item">{{ data.language }}</p>
+            <div class="languange-menu-mobile">
+                {{ apos.singleton(data.widget, 'langArea', 'langselector') }}
+
+            </div>
+        </div>
+        <div class="menu-button" onclick="openMenu(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+    </div>
+    <div class="mobile-menu fw" id="mobile-menu">
+        {{ apos.area(data.widget, 'menuArea', {
+            widgets: {
+                'menu': {}
+            }
+        }) }}
+    </div>
+</div>
+<div class="top-navbar large">
+    <div class="logo-container">
+        {{ apos.singleton(data.widget, 'logoArea', 'apostrophe-images', {
+                    limit: 1,
+                    size: 'one-third'
+                }) }}
+    </div>
+
+    <div class="menu-items-container">
+
+
+        {{ apos.area(data.widget, 'menuArea', {
+                widgets: {
+                    'menu': {}
+                }
+            }) }}
+
+    </div>
+
+    <div class="language-container">
+        {{ apos.singleton(data.widget, 'langArea', 'langselector') }}
+    </div>
+</div>
+

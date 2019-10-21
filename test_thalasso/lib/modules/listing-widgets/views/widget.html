@@ -1,0 +1,14 @@
+<div>
+    <h4>Country Area: {{ data.widget.countryArea }}</h4>
+    <h4>Characteristic: {{ data.widget.characteristic }}</h4>
+    <h4>Start Date: {{ data.widget.startDate }}</h4>
+    <h4>End Date: {{ data.widget.endDate }}</h4>
+    <h4>Listing columns: {{ data.widget.listingColumns }}</h4>
+    <h4>List length: {{ data.widget.listLength }}</h4>
+    {% for language in data.languages %}
+        <h4>title {{ language }}: {{ data.widget['title' + language] }}</h4>
+    {% endfor %}
+    <h4>Display title: {{ data.widget.displayTitle }}</h4>
+    <h4>Response</h4>
+    {{ data.widget.products | json }}
+</div>

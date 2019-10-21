@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div class="page-container">
+        <div class="container-widget">
+            {{
+                apos.area(data.page, 'promoboxes', {
+                    widgets: {
+                        'promobox': {}
+                    }
+                })
+            }}
+            <div class="clear"></div>
+        </div>
+        <div class="fw slider-container">
+            {{
+                apos.area(data.page, 'productSliders', {
+                    widgets: {
+                        'productslider': {}
+                    }
+                })
+            }}
+        </div>
+        <div class="container-info">
+            {{ apos.singleton(data.page, 'listing', 'listing') }}
+        </div>
+        <div class="container-info">
+            {{ apos.singleton(data.page, 'testimonial', 'testimonial') }}
+            <div class="clear"></div>
+            {{ apos.singleton(data.page, 'blog', 'blog') }}
+            <div class="clear"></div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "blogpost.html" %}
+
+{% block title %}{{ data.piece.title }}{% endblock %}
+
+{% block main %}
+    <div class="page-container blog">
+        {% set image = apos.images.first(data.piece.image) %}
+        <div class="fw blog-header" style="background-image: url({{ apos.attachments.url(image) }})">
+            <p><a href="{{ '/' + data.language }}">Home</a> > <a href="{{ '/' + data.language + data.piece._parentUrl }}">Blog</a></p>
+        </div>
+        <div class="blog-body">
+            {% if data.piece['title' + data.language] %}
+                <h2 class="blog-title">{{ data.piece['title' + data.language] }}</h2>
+            {% else %}
+                <h2 class="blog-title">{{ data.piece['title' + data.global.defaultLanguage] }}</h2>
+            {% endif %}
+            <p class="blog-text">
+                {% if data.utilities %}
+                    {% set content = data.utilities.cleanRichText ( data.piece['content' + data.language].items[0].content ) %}
+                    {% if content %}
+                        {{ data.piece['content' + data.language].items[0].content | safe }}
+                    {% else %}
+                        {{ data.piece['content' + data.global.defaultLanguage].items[0].content | safe }}
+                    {% endif %}
+                {% endif %}
+            </p>
+        </div>
+        <div class="blog-images-container">
+            {% if data.page %}
+                {{ apos.area(data.page, 'images', {
+                    widgets: {
+                        'apostrophe-images': {
+                            limit: 1,
+                            size: 'one-third'
+                        }
+                    }
+                }) }}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

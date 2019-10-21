@@ -1,0 +1,29 @@
+<div class="touchMe" on>
+    {% if data.url == data.widget._page._url %}
+        <a  href="{{ '/' + data.language + data.widget._page._url }}" 
+    
+    class="menu-item selected">
+        {% else %}
+            <a  href="{{ '/' + data.language + data.widget._page._url }}" class="menu-item">
+            {% endif %}
+            <p>{{data.widget['menuPoint' + data.language]}}</p>
+
+        </a>
+
+    <ol  class="sub-menu">
+        {% for item in data.widget.subMenuPoints.items %}
+            <li class="menu-item">
+            {% if item._page._url%}
+            <a href="{{ '/' + data.language + item._page._url}}">
+            {% endif %}
+            {% if item.customUrl%}
+            <a href="{{item.customUrl}}">
+            {% endif %}
+                {{item['menuPoint' + data.language]}}
+
+            </a>
+            </li>
+        {% endfor %}
+    </ol>       
+</div>
+

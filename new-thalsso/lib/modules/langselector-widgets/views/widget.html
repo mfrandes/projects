@@ -1,0 +1,7 @@
+{% for language in data.languages %}
+{% if data.language == language %}
+<a href="{{ '/' + language + data.widget.url }}" class="language-item selected">{{ language }}</a>
+{% else %}
+<a href="{{ '/' + language + data.widget.url }}" class="language-item">{{ language }}</a>
+{% endif %}
+{% endfor %}

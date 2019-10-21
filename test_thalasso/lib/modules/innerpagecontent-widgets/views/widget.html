@@ -1,0 +1,26 @@
+<div class="themes-container">
+    {% if data.widget['title' + data.language] %}
+        <h2>{{ data.widget['title' + data.language] }}</h2>
+    {% else %}
+        <h2>{{ data.widget['title' + data.global.defaultLanguage] }}</h2>
+    {% endif %}
+    {% if data.utilities %}
+        {% set content = data.utilities.cleanRichText ( data.widget['content' + data.language].items[0].content ) %}
+        {% if content %}
+            {{ data.widget['content' + data.language].items[0].content | safe }}
+        {% else %}
+            {{ data.widget['content' + data.global.defaultLanguage].items[0].content | safe }}
+        {% endif %}
+    {% endif %}
+    <div class="themes-images-container">
+        {% if data.page %}
+            {{
+                apos.area(data.page, 'redirects', {
+                    widgets: {
+                        'redirect': {}
+                    }
+                })
+            }}
+        {% endif %}
+    </div>
+</div>

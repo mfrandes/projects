@@ -1,0 +1,6 @@
+{% set image = apos.images.first(data.widget.image) %}
+<a href="{{ data.widget.redirectURL }}">
+    <div class="product-img-container" style="background-image: url({{ apos.attachments.url(image, { size: 'one-sixth' }) }});">
+        <div class="product-label">{{ data.widget.title }}</div>
+    </div>
+</a>

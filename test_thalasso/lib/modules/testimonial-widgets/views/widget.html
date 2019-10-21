@@ -1,0 +1,24 @@
+<div class="testimonials-container">
+    <h2 class="info-title">TESTIMONIALS</h2>
+    <div class="testimonials-row">
+        {% for piece in data.widget._pieces %}
+            {% if loop.index <= 3 %}
+                {% set image = apos.images.first(piece.image) %}
+                <div class="testimonial">
+                    {% if image %}
+                    <div class="testimonial-image-container">
+                        <img src="{{ apos.attachments.url(image, { size: 'one-third' }) }}"/>
+                    </div>
+                    {% endif %}
+                    <div class="testimonial-text">
+                        {% if piece['shortContent' + data.language] %}
+                            {{ piece['shortContent' + data.language] }}
+                        {% else %}
+                            {{ piece['shortContent' + data.global.defaultLanguage] }}
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

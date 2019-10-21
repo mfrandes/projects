@@ -1,0 +1,28 @@
+.touchMe .sub-menu {
+    display: none;
+}
+
+.touchMe:hover .sub-menu {
+    position       : absolute;
+    height         : 48px;
+    right          : 24px;
+    bottom         : 0;
+    display        : flex;
+    flex-direction: column;
+    align-items    : center;
+    justify-content: center;
+}
+.touchMe:hover .sub-menu a {
+    display: block;
+    margin-top: 2px;
+    color: #fff;
+    background-color: rgba(58, 101, 154, 0.5);
+    height: 36px;
+    font-size: 16px;
+    font-family: Lato;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-left: 55px;
+    line-height: 36px;
+}
